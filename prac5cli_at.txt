@@ -1,0 +1,57 @@
+#####SERVER
+
+import socket
+
+host = "127.0.0.1"
+port = 12000
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind((host, port))
+
+with open('Myfile2.txt', 'wb') as f:
+    print('New file created')
+    while True:
+        data, addr = sock.recvfrom(1024)
+        print("Received:", data)
+
+        if data.decode("utf-8") == "Now":
+            break
+
+        f.write(data)
+
+    print('File is successfully received!!!')
+
+with open('Myfile2.txt', 'r') as f:
+    print(f.read())
+
+sock.close()
+print('Connection closed!')
+
+
+
+
+#####CLIENT
+
+
+
+import socket
+
+host = "127.0.0.1"
+port = 12000
+buffer_size = 1024
+file_name = r"C:\Users\ASUS\OneDrive\Documents\New folder\Myfile2.txt"  # ✅ correct path
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+with open(file_name, "r") as f:
+    data = f.read(buffer_size)
+
+    while data:
+        print("Sending:", data)
+        sock.sendto(data.encode(), (host, port))
+        data = f.read(buffer_size)
+
+    sock.sendto("Now".encode(), (host, port))
+
+sock.close()
+print("File sent successfully!")

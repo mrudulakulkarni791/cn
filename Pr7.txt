@@ -1,0 +1,18 @@
+Command : TCP
+Packets:14330,Displayed:4097(28.6%),Dropped:0(0.0%)
+
+Command:HTTP
+Packets:14330,Displayed:2(0.0%),Dropped:0(0.0%)
+
+Command:tcp.ack==1
+Packets:14330,Displayed:228(1.6%),Dropped:0(0.0%)
+
+Command:tcp.flags.reset==1
+Packets:14330,Displayed:1(0.0%),Dropped:0(0.0%)
+
+Command:tcp.flags.syn==1
+Packets:14330,Displayed:1(0.0%),Dropped:0(0.0%)
+
+Command:tcp.flags.push==1
+Packets:14330,Displayed:1(0.0%),Dropped:0(0.0%)
+
